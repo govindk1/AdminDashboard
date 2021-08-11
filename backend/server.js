@@ -3,8 +3,8 @@ import cors from "cors"
 import  "./db/mongoose.js"
 
 //user router
-import collegeRouter from "./routes/college"
-import studentRouter from "./routes/student" 
+import collegeRouter from "./routes/college.js"
+import studentRouter from "./routes/student.js" 
 
 
 
@@ -21,8 +21,8 @@ app.use(cors())
 app.use('/college', collegeRouter)
 app.use('/student', studentRouter)
 
-app.listen((PORT) => {
-    console.log(`Port  is running on ${PORT}`)
+app.listen(PORT, () => {
+    console.log(`Server  is running on port  ${PORT}`)
 })
 
 
