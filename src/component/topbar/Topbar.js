@@ -4,6 +4,12 @@ import Button from '@material-ui/core/Button';
 import UpdateIcon from '@material-ui/icons/Update';
 
 export default function Topbar() {
+
+  const loaddata = () => {
+    //localStorage.clear();
+    window.location.reload(false)
+  }
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -14,6 +20,7 @@ export default function Topbar() {
         <Button
             variant="outlined"
             color="primary"
+            onClick = {loaddata}
             endIcon={<UpdateIcon />}>
             update Database
         </Button>

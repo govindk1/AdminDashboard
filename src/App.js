@@ -13,6 +13,7 @@ import Home from './component/Home/Home';
 import CollegeList from './pages/CollegeList/CollegeList';
 import CollegeInfo from './pages/CollegeInfo/CollegeInfo';
 import StudentProfile from './pages/StudentProfile/StudentProfile';
+import CollegeStatewisedetails from "./pages/Collegestatewisedetails/Collegestatewisedetails"
 
 function App() {
 
@@ -42,10 +43,10 @@ function App() {
         let collegeState = (collegeData[collegeName][0].state)
         let collegeId = (collegeData[collegeName][0]._id)
         if(collegeState in obj){
-          obj[collegeState] = [obj[collegeState][0]+1, [...obj[collegeState][1], [collegeName, collegeId]]]
+          obj[collegeState] = [obj[collegeState][0]+1, [...obj[collegeState][1], {collegename:collegeName, collegeid:collegeId}]]
         }
         else{
-          obj[collegeState] = [1, [[collegeName, collegeId]]]
+          obj[collegeState] = [1, [{collegename:collegeName, collegeid:collegeId}]]
         }
 
         
@@ -125,8 +126,12 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
+            
             <Route exact path="/college">
               <CollegeList />
+            </Route>
+            <Route exact path="/collegestatewise">
+              <CollegeStatewisedetails />
             </Route>
             <Route exact path="/college/:collegeid">
               <CollegeInfo />

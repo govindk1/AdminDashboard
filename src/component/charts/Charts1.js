@@ -23,7 +23,7 @@ function Charts1() {
     }
     for(key in res)
         //console.log((res[key][0]/total)*100)
-        data = [...data, {name:key, percentage:(res[key][0]/total)*100}]
+        data = [...data, {name:key, percentage:Math.round((res[key][0]/total)*100)}]
     //const data = []
     return (
         

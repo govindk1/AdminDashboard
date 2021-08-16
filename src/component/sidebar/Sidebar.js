@@ -22,7 +22,7 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/" onClick={makeactive} className="link">
-              <li className="sidebarListItem active">
+              <li className="sidebarListItem">
                 <HomeIcon className="sidebarIcon" color="primary"/>
                 Home
               </li>
@@ -31,6 +31,12 @@ export default function Sidebar() {
               <li className="sidebarListItem">
                 <ListAltIcon className="sidebarIcon" color="primary"/>
                 CollegeList
+              </li>
+            </Link>
+            <Link to="/collegestatewise" onClick={makeactive} className="link">
+              <li className="sidebarListItem">
+                <ListAltIcon className="sidebarIcon" color="primary"/>
+                CollegeState
               </li>
             </Link>
           </ul>
