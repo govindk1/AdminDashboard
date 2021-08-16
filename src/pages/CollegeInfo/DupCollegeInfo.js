@@ -15,7 +15,7 @@ function titleCase(str) {
   }
 
 
-  function CollegeInfo() {
+  function DupCollegeInfo() {
 
     const {collegeid} = useParams()
     const [collegeDetails, setcollegeDetails] = useState({name:'', city:'', state:'', noofstudents:''})
@@ -81,7 +81,7 @@ function titleCase(str) {
             renderCell:  (params) => {
             return (
                 <React.Fragment>
-                <Link to={"/dupcollege/" + data[params.row.id - 1]} style={{textDecoration:"none"}}>
+                <Link to={"/college/" + data[params.row.id - 1]} style={{textDecoration:"none"}}>
                     <Button variant="outlined" color="primary">
                         View
                     </Button>
@@ -235,7 +235,7 @@ function titleCase(str) {
     )
 }
 
-export default CollegeInfo
+export default DupCollegeInfo
 
 
 

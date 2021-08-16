@@ -3,11 +3,16 @@ import "./topbar.css";
 import Button from '@material-ui/core/Button';
 import UpdateIcon from '@material-ui/icons/Update';
 
+
+
+
 export default function Topbar() {
+  
 
   const loaddata = () => {
-    //localStorage.clear();
+    localStorage.clear();
     window.location.reload(false)
+ 
   }
 
   return (

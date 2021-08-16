@@ -14,6 +14,8 @@ import CollegeList from './pages/CollegeList/CollegeList';
 import CollegeInfo from './pages/CollegeInfo/CollegeInfo';
 import StudentProfile from './pages/StudentProfile/StudentProfile';
 import CollegeStatewisedetails from "./pages/Collegestatewisedetails/Collegestatewisedetails"
+import DupCollegeInfo from './pages/CollegeInfo/DupCollegeInfo';
+
 
 function App() {
 
@@ -81,6 +83,8 @@ function App() {
       if(localStorage.getItem('collegestudents') === null){
         try{
            await allcollegestudents();
+           await collegeStateWise()
+           await courseslist() 
         }
         catch{
 
@@ -135,6 +139,9 @@ function App() {
             </Route>
             <Route exact path="/college/:collegeid">
               <CollegeInfo />
+            </Route>
+            <Route exact path="/dupcollege/:collegeid">
+              <DupCollegeInfo />
             </Route>
             <Route exact path="/studentprofile/:collegestudentid">
               <StudentProfile />
