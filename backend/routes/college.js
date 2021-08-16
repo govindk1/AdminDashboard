@@ -66,6 +66,7 @@ router.get('/allcollegestudents', async (req, res) => {
         const colleges = await College.find();
         
         for(let i = 0; i < 100; i++){
+            console.log(i)
             try{
                 const college = await College.findById(colleges[i]._id)
                 await college.populate('students').execPopulate()

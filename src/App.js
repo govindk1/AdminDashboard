@@ -7,9 +7,12 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 //importing components
 import Topbar from './component/topbar/Topbar';
 import Sidebar from "./component/sidebar/Sidebar.js"
+import Home from './component/Home/Home';
 
 //importing pages
 import CollegeList from './pages/CollegeList/CollegeList';
+import CollegeInfo from './pages/CollegeInfo/CollegeInfo';
+import StudentProfile from './pages/StudentProfile/StudentProfile';
 
 function App() {
 
@@ -28,12 +31,82 @@ function App() {
       }
     }
 
-    if(localStorage.getItem('collegestudents') === null){
-      allcollegestudents();
+
+    //structure {state : [college_count, [[college1], [college2] ..]]}
+    async function collegeStateWise(){
+      let obj = {}
+      for(var i = 0; i < 100; i++){
+        
+        let collegeData = JSON.parse(localStorage.getItem('collegestudents'))[i]
+        let collegeName = (Object.keys(collegeData)[0])
+        let collegeState = (collegeData[collegeName][0].state)
+        let collegeId = (collegeData[collegeName][0]._id)
+        if(collegeState in obj){
+          obj[collegeState] = [obj[collegeState][0]+1, [...obj[collegeState][1], [collegeName, collegeId]]]
+        }
+        else{
+          obj[collegeState] = [1, [[collegeName, collegeId]]]
+        }
+
+        
+      }
+      localStorage.setItem('collegeStateWise', JSON.stringify(obj))
     }
-    else{
+
+    async function courseslist(){
+      let obj = {}
+      for(var i = 0; i < 100; i++){
+        
+        let collegeData = JSON.parse(localStorage.getItem('collegestudents'))[i]
+        let collegeName = (Object.keys(collegeData)[0])
+
+        let courselist = collegeData[collegeName][0].courselist
+        for(var j = 0; j < courselist.length; j++){
+          if(courselist[j].trim() in obj){
+            obj[courselist[j].trim()] += 1
+          }
+          else{
+            obj[courselist[j].trim()] = 1
+          }
+        }
+        
+
+        
+      }
+      localStorage.setItem('courseslist', JSON.stringify(obj))
+    }
+
+    async function final_(){
+      if(localStorage.getItem('collegestudents') === null){
+        try{
+           await allcollegestudents();
+        }
+        catch{
+
+        }
+      
+
+      }
+
+      if(localStorage.getItem('collegeStateWise')===null){
+        await collegeStateWise()
+      }
+
+      if(localStorage.getItem('courseslist')===null){
+        await courseslist() 
+      }
+      
       Setloading(1);
+      
+      
     }
+
+    final_();
+
+    
+    
+    
+    
   }, [])
 
 
@@ -48,9 +121,18 @@ function App() {
 
 
           <Switch>
+
+            <Route exact path='/'>
+              <Home />
+            </Route>
             <Route exact path="/college">
-          
               <CollegeList />
+            </Route>
+            <Route exact path="/college/:collegeid">
+              <CollegeInfo />
+            </Route>
+            <Route exact path="/studentprofile/:collegestudentid">
+              <StudentProfile />
             </Route>
           </Switch>
         </div>

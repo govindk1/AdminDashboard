@@ -1,0 +1,76 @@
+.collegeInfo{
+    flex:4;
+    padding: 20px;
+}
+
+.collegeTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .collegeContainer {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .collegeShow {
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  }
+  
+  .studentDetails {
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    margin-left: 20px;
+  }
+  
+  
+
+  .collegeShowcollegename {
+    font-weight: 600;
+  }
+  
+  .collegeShowcollegeTitle {
+    font-weight: 300;
+  }
+  
+  
+  .collegeShowTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(175, 170, 170);
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .collegeShowInfo{
+      display: flex;
+      align-items: center;
+      margin: 9px 0px;
+      color: #444;
+  }
+  
+  .collegeShowIcon{
+      font-size: 16px !important;
+  }
+  
+  .collegeShowInfoTitle{
+      margin-left: 10px;
+  }
+  
+  .studentTitle1{
+      font-size: 24px;
+      font-weight: 600;
+  }
+ 
+  
+  
+
+ 
+  
+ 

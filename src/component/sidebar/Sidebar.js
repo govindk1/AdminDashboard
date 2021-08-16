@@ -4,22 +4,35 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
+
+  const makeactive =  (e) => {
+    
+    const li = document.getElementsByClassName("sidebarListItem");
+    
+    for(var i = 0; i < li.length; i++){
+      li[i].classList.remove("active")
+    }
+    e.target.classList.add("active")
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
-            <li className="sidebarListItem active">
-              <HomeIcon className="sidebarIcon" color="primary"/>
-              Home
-            </li></Link>
-            <Link to="/college" className="link">
-            <li className="sidebarListItem">
-              <ListAltIcon className="sidebarIcon" color="primary"/>
-              CollegeList
-            </li></Link>
+            <Link to="/" onClick={makeactive} className="link">
+              <li className="sidebarListItem active">
+                <HomeIcon className="sidebarIcon" color="primary"/>
+                Home
+              </li>
+            </Link>
+            <Link to="/college" onClick={makeactive} className="link">
+              <li className="sidebarListItem">
+                <ListAltIcon className="sidebarIcon" color="primary"/>
+                CollegeList
+              </li>
+            </Link>
           </ul>
         </div>
 
